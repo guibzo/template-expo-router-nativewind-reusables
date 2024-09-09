@@ -3,12 +3,12 @@ import { NAV_THEME } from '@/styles/constants'
 import '@/styles/global.css'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { ThemeProvider, type Theme } from '@react-navigation/native'
-import { Stack } from 'expo-router'
 import * as SplashScreen from 'expo-splash-screen'
 import { useEffect, useState } from 'react'
 import { Platform } from 'react-native'
 import 'react-native-reanimated'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { Router } from './router'
 export { ErrorBoundary } from 'expo-router'
 
 const LIGHT_THEME: Theme = {
@@ -91,9 +91,7 @@ export default function Layout() {
   return (
     <SafeAreaProvider>
       <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen name='(private)' />
-        </Stack>
+        <Router />
 
         {/* <PortalHost /> */}
       </ThemeProvider>
